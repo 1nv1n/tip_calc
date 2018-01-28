@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
-
-// Main App
+// Main App		
 void main() => runApp(new App());
 
 // App Name
@@ -26,27 +25,28 @@ class AppContainer extends StatelessWidget {
 
   // Text Editing Controllers
   final TextEditingController billAmountFieldController =
-      new TextEditingController();
+  new TextEditingController();
   final TextEditingController tipPercentageFieldController =
-      new TextEditingController();
+  new TextEditingController();
   final TextEditingController totalAmountFieldController =
-      new TextEditingController();
+  new TextEditingController();
   final TextEditingController tipAmountFieldController =
-      new TextEditingController();
+  new TextEditingController();
 
   @override
   Widget build(BuildContext context) {
     return new Material(
-        child: new Column(
-            children: <Widget>[
-              new InputFieldWidget(
-                title: appName,
-                billAmountFieldController: billAmountFieldController,
-                tipPercentageFieldController: tipPercentageFieldController,
-                totalAmountFieldController: totalAmountFieldController,
-                tipAmountFieldController: tipAmountFieldController),
-            new ResetWidget(),
-    ])
+        child: new Column(children: <Widget>[
+          new Expanded(child: new InputFieldWidget(
+              title: appName,
+              billAmountFieldController: billAmountFieldController,
+              tipPercentageFieldController: tipPercentageFieldController,
+              totalAmountFieldController: totalAmountFieldController,
+              tipAmountFieldController: tipAmountFieldController),)
+          ,
+          new Expanded(child:  new Row( mainAxisAlignment: MainAxisAlignment.center,children: <Widget>[new ResetWidget()],),),
+        ],)
+
 
 //      color: Colors.indigo,
 //      child: new InputFieldWidget(title: appName,
@@ -64,7 +64,7 @@ class AppContainer extends StatelessWidget {
 //              tipAmountFieldController: tipAmountFieldController),
 //            new ResetWidget(),
 //          ]),
-        );
+    );
   }
 }
 
@@ -72,11 +72,11 @@ class AppContainer extends StatelessWidget {
 class InputFieldWidget extends StatefulWidget {
   InputFieldWidget(
       {Key key,
-      this.title,
-      this.billAmountFieldController,
-      this.tipPercentageFieldController,
-      this.totalAmountFieldController,
-      this.tipAmountFieldController})
+        this.title,
+        this.billAmountFieldController,
+        this.tipPercentageFieldController,
+        this.totalAmountFieldController,
+        this.tipAmountFieldController})
       : super(key: key);
 
   // App title
@@ -100,10 +100,10 @@ class InputFieldWidget extends StatefulWidget {
 class ResetWidget extends StatelessWidget {
   ResetWidget(
       {Key key,
-      this.billAmountFieldController,
-      this.tipPercentageFieldController,
-      this.totalAmountFieldController,
-      this.tipAmountFieldController})
+        this.billAmountFieldController,
+        this.tipPercentageFieldController,
+        this.totalAmountFieldController,
+        this.tipAmountFieldController})
       : super(key: key);
 
   // Text Editing Controllers
@@ -186,8 +186,8 @@ class _InputFieldWidgetState extends State<InputFieldWidget> {
                         billAmount = double.parse(value);
                       } else {
                         Scaffold.of(context).showSnackBar(new SnackBar(
-                              content: new Text("Invalid Billed Amount."),
-                            ));
+                          content: new Text("Invalid Billed Amount."),
+                        ));
 
                         // Reset billed amount back to 0
                         billAmount = 0.0;
@@ -227,9 +227,9 @@ class _InputFieldWidgetState extends State<InputFieldWidget> {
                       }
 
                       Scaffold.of(context).showSnackBar(new SnackBar(
-                            content: new Text(
-                                "Invalid Bill Amount. " + exception.toString()),
-                          ));
+                        content: new Text(
+                            "Invalid Bill Amount. " + exception.toString()),
+                      ));
                     }
                   }),
               tipPercentageField = new TextField(
@@ -258,9 +258,9 @@ class _InputFieldWidgetState extends State<InputFieldWidget> {
                         }
                       } else {
                         Scaffold.of(context).showSnackBar(new SnackBar(
-                              content: new Text(
-                                  "Invalid Tip Percentage. Resetting to default."),
-                            ));
+                          content: new Text(
+                              "Invalid Tip Percentage. Resetting to default."),
+                        ));
 
                         tipAmount = 0.0;
                         tipAmountFieldController.clear();
@@ -284,9 +284,9 @@ class _InputFieldWidgetState extends State<InputFieldWidget> {
                           tipPercentage.toString();
 
                       Scaffold.of(context).showSnackBar(new SnackBar(
-                            content: new Text("Invalid Tip Percentage. " +
-                                exception.toString()),
-                          ));
+                        content: new Text("Invalid Tip Percentage. " +
+                            exception.toString()),
+                      ));
                     }
                   }),
               totalAmountTextField = new TextField(
@@ -309,13 +309,13 @@ class _InputFieldWidgetState extends State<InputFieldWidget> {
                               (totalAmount - billAmount).toString();
                         } else {
                           Scaffold.of(context).showSnackBar(new SnackBar(
-                                content: new Text("Bill Amount < 0.0"),
-                              ));
+                            content: new Text("Bill Amount < 0.0"),
+                          ));
                         }
                       } else {
                         Scaffold.of(context).showSnackBar(new SnackBar(
-                              content: new Text("Invalid Total Amount."),
-                            ));
+                          content: new Text("Invalid Total Amount."),
+                        ));
                       }
                     } catch (exception) {
                       tipAmount = 0.0;
@@ -325,9 +325,9 @@ class _InputFieldWidgetState extends State<InputFieldWidget> {
                       totalAmountFieldController.clear();
 
                       Scaffold.of(context).showSnackBar(new SnackBar(
-                            content: new Text("Invalid Total Amount. " +
-                                exception.toString()),
-                          ));
+                        content: new Text("Invalid Total Amount. " +
+                            exception.toString()),
+                      ));
                     }
                   }),
               tipAmountTextField = new TextField(
@@ -348,9 +348,9 @@ class _InputFieldWidgetState extends State<InputFieldWidget> {
                     }
                   } catch (exception) {
                     Scaffold.of(context).showSnackBar(new SnackBar(
-                          content: new Text(
-                              "Invalid Tip Total. " + exception.toString()),
-                        ));
+                      content: new Text(
+                          "Invalid Tip Total. " + exception.toString()),
+                    ));
                   }
                 },
               ),
