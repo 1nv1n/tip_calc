@@ -1,8 +1,5 @@
 # tip_calc
 
-Flutter Calulates Tips
+Yet Another Tip Calculator App. Powered by Flutter.
 
-## Getting Started
-
-For help getting started with Flutter, view our online
-[documentation](http://flutter.io/).
+![HomePageScreenCast](https://i.imgur.com/k8tIekU.png)
