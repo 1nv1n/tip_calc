@@ -2,6 +2,8 @@
 
 Yet Another Tip Calculator App. Powered by Flutter.
 
-![GooglePlayStoreBadge](https://i.imgur.com/RYIw0yP.png)
-
-![HomePageScreenCast](https://i.imgur.com/k8tIekU.png)
+<p align="center">
+  <a href="https://play.google.com/store/apps/details?id=com.invin.tipcalc">
+    <img src="https://i.imgur.com/RYIw0yP.png" alt="YATC Google Play Store Link"/>
+  </a>
+</p>
