@@ -357,6 +357,9 @@ class _SplitByWidgetState extends State<SplitByWidget> {
   // Method is re-run every time setState is called
   @override
   Widget build(BuildContext context) {
+    // Set the default tip percentage on build
+    calcFields.splitBillFieldController.text = defaultSplitByString;
+
     // 1x1 GridView of the Input
     return new GridView.count(
       primary: true,
@@ -488,7 +491,7 @@ class _SplitInputFieldWidgetState extends State<SplitInputFieldWidget> {
             new Text(invalidSplitTotalAmountString, style: labelTextStyle)));
 
     // Reset calculated amounts
-    calcFields.resetCalculatedFields();
+    calcFields.resetCalculatedFieldsExceptSplitTotal();
   }
 
   // Handle Invalid Split Tip Amount
@@ -649,6 +652,22 @@ class CalculatorFields {
       splitTotalAmount = 0.0;
       splitTotalAmountFieldController.clear();
     }
+  }
+
+  // Reset only the calculated & split (Tip Amount & Total Amount) to defaults.
+  resetCalculatedFieldsExceptSplitTotal() {
+    // Assume the tip to be 0
+    tipAmount = 0.0;
+    splitTipAmount = 0.0;
+    tipPercentage = 0.0;
+
+    tipPercentageFieldController.clear();
+    tipAmountFieldController.clear();
+    splitTipAmountFieldController.clear();
+
+    // Assume the bill to be the total.
+    totalAmount = billedAmount;
+    totalAmountFieldController.text = totalAmount.toString();
   }
 
   // Reset all except the Billed Amount
